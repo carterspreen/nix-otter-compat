@@ -29,6 +29,7 @@ SECTIONS
      * but it has to be exactly like this
      * for binary compatibility with
      * the files provided on Canvas */
+    __global_pointer$ = .  + 0x800;
     .data :
     {
         *(.sbss)
