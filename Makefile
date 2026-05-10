@@ -48,9 +48,9 @@ $(BUILD)/%.o: src/%.S
 # link with gcc
 $(BUILD)/$(PROJECT).elf: ${AS_OBJ_FILES} ${C_OBJ_FILES} ${ASP_OBJ_FILES}
 ifneq ($(C_FILES),)
-	$(CC)  -o $@ $^ -T src/link.ld $(CCFLAGS) 
+	$(CC)  -o $@ $^ -T link.ld $(CCFLAGS) 
 else
-	$(CC) -o $@ $^ -T src/link.ld -mno-relax -nostdlib -nostartfiles -mcmodel=medany $(CCFLAGS)
+	$(CC) -o $@ $^ -T link.ld -mno-relax -nostdlib -nostartfiles -mcmodel=medany $(CCFLAGS)
 endif
 
 $(BUILD)/$(PROJECT).dump: $(BUILD)/$(PROJECT).elf
