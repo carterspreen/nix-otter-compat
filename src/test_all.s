@@ -63,8 +63,11 @@ loop:
 	jal x31, sh_test; call post_test	#23	10
 	jal x31, sb_test; call post_test	#24	10
 
-	j loop
+    # light up the leds in an obvious pattern to indicate program termination
+    li x10, 0xDEADDEAD
+    sw x10, 0(x12)
 end:
+    j end #loop indefinitely to freeze the PC (helps find end of sim)
 
 post_test:
 	1: lw x13,0(x16) #wait till switch one is off
